@@ -1,13 +1,13 @@
 package pessoas;
 
 public class Endereco {
-    String logradouro;
-    int numero;
-    String complemento;
-    String bairro;
-    String cep;
-    String cidade;
-    Estado estado;
+    private String logradouro;
+    private int numero;
+    private String complemento;
+    private String bairro;
+    private String cep;
+    private String cidade;
+    private Estado estado;
 
     public String getLogradouro() {
         return logradouro;

@@ -6,10 +6,10 @@ import pessoas.Professor;
 import java.util.List;
 
 public class Curso {
-    Disciplina disciplina;
-    Turno turno;
-    List<Aluno> alunos;
-    Professor professor;
+    private Disciplina disciplina;
+    private Turno turno;
+    private List<Aluno> alunos;
+    private Professor professor;
 
     public Disciplina getDisciplina() {
         return disciplina;
