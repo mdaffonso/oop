@@ -1,4 +1,4 @@
-package com.matheus;
+package main;
 
 import cursos.Curso;
 import cursos.Disciplina;
@@ -63,6 +63,6 @@ public class Main {
         curso.setDisciplina(Disciplina.INGLES);
         curso.setTurno(Turno.NOITE);
 
-        System.out.println("");
+        System.out.println(curso.toString());
     }
 }

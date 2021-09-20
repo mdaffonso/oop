@@ -1,14 +1,16 @@
 package cursos;
 
 import pessoas.Aluno;
+import pessoas.AlunoMatricula;
 import pessoas.Professor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Curso {
     private Disciplina disciplina;
     private Turno turno;
-    private List<Aluno> alunos;
+    private List<AlunoMatricula> alunos;
     private Professor professor;
 
     public Disciplina getDisciplina() {
@@ -27,13 +29,17 @@ public class Curso {
         this.turno = turno;
     }
 
-    public List<Aluno> getAlunos() {
+    public List<AlunoMatricula> getAlunos() {
         return alunos;
     }
 
     public void setAlunos(List<Aluno> alunos) {
-        this.alunos = alunos;
-        gerarMatriculas();
+        if (alunos == null) return;
+        List<AlunoMatricula> lista = new ArrayList<>();
+        for (int i = 0; i < alunos.size(); i++) {
+            lista.add(new AlunoMatricula(alunos.get(i), i+1));
+        }
+        this.alunos = lista;
     }
 
     public Professor getProfessor() {
@@ -44,9 +50,19 @@ public class Curso {
         this.professor = professor;
     }
 
-    public void gerarMatriculas() {
-        for (int i = 1; i <= alunos.size(); i++) {
-            alunos.get(i - 1).setNumeroDeMatricula(i);
+    private int getLastKey() {
+        int ultimoRegistro = 1;
+
+        for (AlunoMatricula aluno : alunos) {
+            if (aluno.getMatricula() > ultimoRegistro) {
+                ultimoRegistro = aluno.getMatricula();
+            }
         }
+        return ultimoRegistro;
+    }
+
+    public void adicionarAluno(Aluno aluno) {
+        int matricula = getLastKey() + 1;
+        alunos.add(new AlunoMatricula(aluno, matricula));
     }
 }
